@@ -112,10 +112,6 @@ plt.title("PDF with $\mu = 8$");
 
 ```
 
-
-![png](index_files/index_9_0.png)
-
-
 ## Question 5
 
 The average earthquake in a given region happens every 7 weeks.  What is probability that the next earthquake happens between 5 and 8 weeks from now?
@@ -124,8 +120,8 @@ The average earthquake in a given region happens every 7 weeks.  What is probabi
 
 
 ```python
-lower_bound = 5
-upper_bound  = 8
+lower_bound = exp_cdf(7, 5)
+upper_bound  = exp_cdf(7, 8)
 mu = 7 
 
 print("Probability of earthquake before 5 weeks: {}%".format(lower_bound * 100))
@@ -133,23 +129,16 @@ print("Probability of earthquake before 8 weeks: {}%".format(upper_bound * 100))
 print("Probability of earthquake between 5 - 8 weeks: {}%".format((upper_bound - lower_bound) * 100))
 
 # Expected Output: 
-exp_cdf(7, 5), exp_cdf(7, 8), exp_cdf(7, 5)- exp_cdf(7, 8)
+
 # Probability of earthquake before 5 weeks: 51.045834044304684%
 # Probability of earthquake before 8 weeks: 68.10934426760295%
 # Probability of earthquake between 5 - 8 weeks: 17.063510223298273%
 ```
 
-    Probability of earthquake before 5 weeks: 500%
-    Probability of earthquake before 8 weeks: 800%
-    Probability of earthquake between 5 - 8 weeks: 300%
+    Probability of earthquake before 5 weeks: 51.045834044304684%
+    Probability of earthquake before 8 weeks: 68.10934426760295%
+    Probability of earthquake between 5 - 8 weeks: 17.063510223298273%
     
-
-
-
-
-    (0.5104583404430468, 0.6810934426760296, -0.17063510223298273)
-
-
 
 ## Summary
 
