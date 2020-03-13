@@ -34,10 +34,10 @@ In the cell below, complete the following functions.
 import numpy as np
 
 def exp_pdf(mu, x):
-    pass
+    return (1/ mu)* np.exp(-(1/ mu)* x)
     
 def exp_cdf(mu, x):
-    pass
+    return 1- np.exp(-(1/ mu)* x)
 ```
 
 Great! Now, lets answer some questions.
@@ -48,8 +48,16 @@ Steven is picking up a friend at the airport and their plane is late. The late f
 
 
 ```python
+exp_cdf(22, 30)
 # Expected Output: 0.7442708400868994
 ```
+
+
+
+
+    0.7442708400868994
+
+
 
 ## Question 2
 
@@ -57,8 +65,16 @@ The average student takes 44 minutes to complete a test.  What is the probabilit
 
 
 ```python
+1-exp_cdf(44, 38)
 # Expected Output: 0.4216261054870035
 ```
+
+
+
+
+    0.4216261054870035
+
+
 
 ## Question 3
 
@@ -66,8 +82,16 @@ The first customer of the day walks into a store 6 minutes after the store opens
 
 
 ```python
+exp_cdf(6,8)
 # Expected Output: 0.7364028618842733
 ```
+
+
+
+
+    0.7364028618842733
+
+
 
 ## Question 4
 
@@ -79,12 +103,18 @@ What is the probability that the next call will happen in 7 seconds?
 
 ```python
 # Create a list to contain the pdf-values
-
+out = [exp_pdf(8, second) for second in np.linspace(0,30, num = 61)]
     
 # Create the plot
-
+import matplotlib.pyplot as plt
+plt.plot(out, np.linspace(0,30, num = 61));
+plt.title("PDF with $\mu = 8$");
 
 ```
+
+
+![png](index_files/index_9_0.png)
+
 
 ## Question 5
 
@@ -94,19 +124,32 @@ The average earthquake in a given region happens every 7 weeks.  What is probabi
 
 
 ```python
-lower_bound = None
-upper_bound  = None
+lower_bound = 5
+upper_bound  = 8
+mu = 7 
 
 print("Probability of earthquake before 5 weeks: {}%".format(lower_bound * 100))
 print("Probability of earthquake before 8 weeks: {}%".format(upper_bound * 100))
 print("Probability of earthquake between 5 - 8 weeks: {}%".format((upper_bound - lower_bound) * 100))
 
 # Expected Output: 
-# 
+exp_cdf(7, 5), exp_cdf(7, 8), exp_cdf(7, 5)- exp_cdf(7, 8)
 # Probability of earthquake before 5 weeks: 51.045834044304684%
 # Probability of earthquake before 8 weeks: 68.10934426760295%
 # Probability of earthquake between 5 - 8 weeks: 17.063510223298273%
 ```
+
+    Probability of earthquake before 5 weeks: 500%
+    Probability of earthquake before 8 weeks: 800%
+    Probability of earthquake between 5 - 8 weeks: 300%
+    
+
+
+
+
+    (0.5104583404430468, 0.6810934426760296, -0.17063510223298273)
+
+
 
 ## Summary
 
